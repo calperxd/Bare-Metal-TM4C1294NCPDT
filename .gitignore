@@ -1,2 +1,4 @@
-# gcc coverage testing tool files
-
+#files
+*.o
+*.elf
+*.map
