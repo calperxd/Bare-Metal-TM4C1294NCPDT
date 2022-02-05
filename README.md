@@ -17,7 +17,7 @@ This repository is an integrated development envoriment for Linux users to devel
 
 * To build the project just type .
 ```shell
-> make
+$> make
 ```
 
 *  To clean the project type. 
