@@ -17,7 +17,7 @@
 #define N            4  // chosen for reference frequency within 4 to 30 MHz
 #define MINT        96  // 480,000,000 = (25,000,000/(0 + 1)/(4 + 1))*(96 + (0/1,024))
 #define MFRAC        0  // zero to reduce jitter
-#define PSYSDIV 		 3
+#define PSYSDIV 	 3
 
 //    SysClk = fVCO / (PSYSDIV + 1)
 #define SYSCLK (FXTAL/(Q+1)/(N+1))*(MINT+MFRAC/1024)/(PSYSDIV+1)
@@ -35,8 +35,8 @@ void SystemInit(void)
 		// MINT = 96
 		SYSCTL_PLLFREQ0_R |= ((1<<6)|(1<<5));
 		// Q = 0 and N = 0
-		SYSCTL_PLLFREQ1_R &= ~((1<<12)|(1<<11)|(1<<10)|(1<<9)|(1 << 8)|(1 << 4) | \
-													(1 << 3) | (1 << 2) | (1 << 1) | (1 << 0));
+		SYSCTL_PLLFREQ1_R &= ~((1<<12)|(1<<11)|(1<<10)|(1<<9)|(1 << 8)|(1 << 4) 				|\
+								(1 << 3) | (1 << 2) | (1 << 1) | (1 << 0));
 		// N = 0x4
 		SYSCTL_PLLFREQ1_R |= (1 << 2);
 		// Turn on PLL
@@ -44,18 +44,18 @@ void SystemInit(void)
 		// Lock in register changes
 		SYSCTL_RSCLKCFG_R |= SYSCTL_RSCLKCFG_NEWFREQ;      
 		SYSCTL_MEMTIM0_R 	&= ~(	\
-/*EBCHT*/										(1 << 25) | (1 << 24) | (1 << 23) | (1 << 22) |\
-/*EBCE*/										(1 << 21)	|\
-/*EWS*/											(1 << 19) | (1 << 18) | (1 << 17) |(1 << 16) |\
-/*FBCHT*/										(1 << 9) | (1 << 8) | (1 << 7) | (1 << 6) |\
-/*FBCE*/										(1 << 5) |\
+/*EBCHT*/										(1 << 25) | (1 << 24) | (1 << 23) | (1 << 22) 	|\
+/*EBCE*/										(1 << 21)										|\
+/*EWS*/											(1 << 19) | (1 << 18) | (1 << 17) |(1 << 16) 	|\
+/*FBCHT*/										(1 << 9) | (1 << 8) | (1 << 7) | (1 << 6) 		|\
+/*FBCE*/										(1 << 5) 										|\
 /*FWS*/											(1 << 3) | (1 << 2) | (1 << 1) | (1 << 0)
 														);
 	
-			SYSCTL_MEMTIM0_R 	|= (	\
-/*EBCHT*/										(1 << 24) | (1 << 23) |\
-/*EWS*/											(1 << 18) | (1 << 16) |\
-/*FBCHT*/										(1 << 8) | (1 << 7) |\
+			SYSCTL_MEMTIM0_R 	|= (															\
+/*EBCHT*/										(1 << 24) | (1 << 23) 							|\
+/*EWS*/											(1 << 18) | (1 << 16) 							|\
+/*FBCHT*/										(1 << 8) | (1 << 7) 							|\
 /*FWS*/											(1 << 2) | (1 << 0)
 														);
 		// Wait PLL powered and locked
