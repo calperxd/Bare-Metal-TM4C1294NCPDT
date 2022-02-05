@@ -1,9 +1,8 @@
-#include <stdio.h>
-#include "tm4c1294ncpdt.h"
+#include "inc/tm4c1294ncpdt.h"
 #include <stdint.h>
 
 
-// 		Write the SYSCTL_PLLFREQ0_R and SYSCTL_PLLFREQ1_R registers with the values of
+// 	  Write the SYSCTL_PLLFREQ0_R and SYSCTL_PLLFREQ1_R registers with the values of
 //    Q, N, MINT, and MFRAC to configure the desired VCO frequency setting.
 //    ************
 //    The datasheet implies that the VCO frequency can go as high as 25.575 GHz
@@ -23,9 +22,8 @@
 //    SysClk = fVCO / (PSYSDIV + 1)
 #define SYSCLK (FXTAL/(Q+1)/(N+1))*(MINT+MFRAC/1024)/(PSYSDIV+1)
 
-static void SystemInit(void)
+void SystemInit(void)
 {
-
     SYSCTL_MOSCCTL_R &= ~(SYSCTL_MOSCCTL_NOXTAL);
 		SYSCTL_MOSCCTL_R &= ~(SYSCTL_MOSCCTL_PWRDN);
 		while(!(SYSCTL_RIS_R & SYSCTL_RIS_MOSCPUPRIS));
@@ -43,7 +41,7 @@ static void SystemInit(void)
 		SYSCTL_PLLFREQ1_R |= (1 << 2);
 		// Turn on PLL
 		SYSCTL_PLLFREQ0_R |= (1 << 23);
-		// lock in register changes
+		// Lock in register changes
 		SYSCTL_RSCLKCFG_R |= SYSCTL_RSCLKCFG_NEWFREQ;      
 		SYSCTL_MEMTIM0_R 	&= ~(	\
 /*EBCHT*/										(1 << 25) | (1 << 24) | (1 << 23) | (1 << 22) |\

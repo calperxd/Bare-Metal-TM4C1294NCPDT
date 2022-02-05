@@ -5,7 +5,7 @@
 
 int main (void)
 {
-    // This function is responsible to configure the system time
+    // This function is responsible to configure the system clock
     SystemInit();
     return 0;
 }
