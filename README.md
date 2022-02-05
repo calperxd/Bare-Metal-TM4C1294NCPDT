@@ -20,16 +20,14 @@ This repository is an integrated development envoriment for Linux users to devel
 > make
 ```
 
-
+*  To clean the project type. 
+```shell
+>  make clean
+```
 
 * To open the openocd host type.
 ```shell
 >  make load
-```
-
-*  To clean the project type. 
-```shell
->  make clean
 ```
 
 if you type **make load** then you must open another terminal and start the arm-none-eabi-gdb.
