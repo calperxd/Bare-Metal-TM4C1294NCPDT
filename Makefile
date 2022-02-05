@@ -10,7 +10,7 @@ all:
 	@$(SIZE) $(PROJ_NAME).elf
 
 load:
-	sudo openocd -f ti_ek-tm4c1294xl.cfg
+	sudo openocd -f board/ti_ek-tm4c1294xl.cfg
 
 clean:
 	$(RM) $(OBJ_DIR)*.o
